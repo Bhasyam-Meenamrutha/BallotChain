@@ -65,6 +65,8 @@ function CreateProposals() {
     console.log("addingParticipants",addingParticipants);
 
   }
+   
+
 
 
   

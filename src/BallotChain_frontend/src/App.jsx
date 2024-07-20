@@ -6,6 +6,7 @@ import { AuthClient } from "@dfinity/auth-client";
 import { useEffect, useState } from "react";
 import CreateProposals from './CreateProposals';
 import AllProposals from './AllProposals';
+import MyProposals from './MyProposals';
 
 function Home() {
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ function App() {
         <Route path="/ConnectPage" element={<ConnectPage />} />
         <Route path="/CreateProposals" element={<CreateProposals />} />
         <Route path="/AllProposals" element={<AllProposals /> } />
+        <Route path="/MyProposals" element={<MyProposals />} />
       </Routes>
     </Router>
   );

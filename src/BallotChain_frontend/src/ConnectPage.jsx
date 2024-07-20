@@ -1,8 +1,4 @@
 import React from 'react';
-import {  Link } from 'react-router-dom';
-import CreateProposals from './CreateProposals';
-import AllProposals from './AllProposals';
-import MyProposals from './MyProposals';
 import './ConnectPage.css';
 import { useLocation } from 'react-router-dom';
 import {Principal} from '@dfinity/principal';
@@ -25,9 +21,12 @@ function CreateProposalsfun(){
 
 }
 function AllPropPage(){
-  navigate('/AllProposals');
+  navigate('/AllProposals',{ state: { principal: principal} });
 }
   
+function MypropPage(){
+  navigate('/MyProposals',{ state: { principal: principal} });
+}
   return (
     <div className="dashboard">
       
@@ -37,23 +36,12 @@ function AllPropPage(){
         <ul>
           <li onClick={CreateProposalsfun}> Create Prooposals </li>
           <li onClick={AllPropPage}>All Proposals</li>
-          <li><Link to="my-proposals">My Proposals</Link></li>
+          <li onClick={MypropPage}>My Proposals</li>
           
         </ul>
       </nav>
-      {/* <div className="content">
-        
-        <Routes>
-          <Route path="/CreateProposals" element={<CreateProposals />} />
-          <Route path="all-proposals" element={<AllProposals />} />
-          <Route path="my-proposals" element={<MyProposals />} />
-          
-        </Routes>
-      </div> */}
       <div id="pri"> 
         Principal: {principal}
-
-
       </div>
     </div>
   );
