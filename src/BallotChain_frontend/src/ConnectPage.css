@@ -1,0 +1,74 @@
+.dashboard {
+    display: flex;
+    height: 100vh;
+    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/VOTE2.jpg'); /* Update with your background image path */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 20px 0;
+  }
+  
+  .sidebar li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .sidebar li a:hover {
+    text-decoration: underline;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    color: #fff; /* Text color for readability against the background image */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for readability */
+    border-radius: 10px;
+  }
+  
+  .info-section {
+    margin-bottom: 20px;
+  }
+  
+  .info-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .info-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .info-section li {
+    margin-bottom: 10px;
+  }
+  
+  #pri{
+    position:absolute;
+    left:300px;
+    top:200px;
+    font-size: 35px ;
+
+    color: #f0f5ef;
+  }
+  #profile{
+    position: absolute;
+    left:750px;
+    top:100px;
+    color: rgb(0, 255, 136);
+    font-size: 50px;
+  }

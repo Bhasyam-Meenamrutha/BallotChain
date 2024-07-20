@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "BallotChain_backend": {
+      "main": "src/BallotChain_backend/main.mo",
+      "type": "motoko"
+    },
+    "BallotChain_frontend": {
+      "dependencies": [
+        "BallotChain_backend"
+      ],
+      "source": [
+        "src/BallotChain_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "BallotChain_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

@@ -1,0 +1,56 @@
+body, html, #root, .App {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .App {
+    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/VOTE3.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .connect-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 10px;
+    font-size: 25px; 
+  }
+  
+  .connect-button:hover {
+    background-color: darkblue;
+  }
+  
+  .text-container {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+    color: white;
+    max-width: 500px;
+    
+  }
+  
+  .caption {
+    font-size: 70px;
+    margin: 10;
+  }
+  
+  .tagline {
+    font-size: 25px;
+    margin: 10px 0 0 0;
+  }
+  
