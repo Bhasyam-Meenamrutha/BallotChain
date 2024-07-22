@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Principal } from '@dfinity/principal';
 import { BallotChain_backend } from 'declarations/BallotChain_backend';
-
+import './CreateProposals.css';
 
 function CreateProposals() {
   const location = useLocation();
   const { principal } = location.state || {};
-  
 
   async function SubmittingNominationDetails(event) {
     event.preventDefault();
@@ -33,7 +32,6 @@ function CreateProposals() {
     setNominationId(e.target.value);
   };
 
-
   const handleParticipantChange = (index, event) => {
     const newParticipants = [...participants];
     newParticipants[index] = event.target.value;
@@ -51,76 +49,71 @@ function CreateProposals() {
     console.log('Participants:', participants);
   };
 
-  async function SubmitParti(){
+  async function SubmitParti() {
     var NomParti = participants;
     var NominateId = BigInt(nominationId);
 
-     var FrontendParti = {
-      NominateId : NominateId,
-      Participant :NomParti
-  
-     }
+    var FrontendParti = {
+      NominateId: NominateId,
+      Participant: NomParti
+    };
 
     var addingParticipants = await BallotChain_backend.CreateParticipants(FrontendParti);
-    console.log("addingParticipants",addingParticipants);
-
+    console.log("addingParticipants", addingParticipants);
   }
-   
 
-
-
-  
   return (
-    <>
-    <div className="form-container">
-      <form id="nomination-form" onSubmit={SubmittingNominationDetails}>
-        <h2>Nomination Form</h2>
-        <div className="form-group">
-          <label htmlFor="nomination-purpose">Nomination Purpose</label>
-          <input type="text" id="nominationpurpose" name="nomination-purpose" required />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-
-    <div>
-    <div className="form-container">
-      <form id="nomination-form" onSubmit={handleSubmit}>
-        <h2>Nomination Form</h2>
-        <div className="form-group">
-          <label htmlFor="nomination-id">Nomination Id</label>
-          <input
-            type="text"
-            id="nomination-id"
-            value={nominationId.toString()}
-            onChange={handleNominationIdChange}
-            required
-            readOnly
-          /> 
-  </div>
-        <div className="form-group">
-          <label>Participants</label>
-          {participants.map((participant, index) => (
-            <div key={index} className="participant-input">
-              <input
-              id = "multiPart"
-                type="text"
-                value={participant}
-                onChange={(event) => handleParticipantChange(index, event)}
-                placeholder={`Participant ${index + 1}`}
-                required
-              />
+    <div className="page-container">
+      <div className="forms-container">
+        <div className="form-container">
+          <form id="nomination-form" onSubmit={SubmittingNominationDetails}>
+            <h2 id="NF">Voting Purpose</h2>
+            <div className="form-group">
+              <label htmlFor="nomination-purpose">Voting Purpose:</label>
+              <input type="text" id="nominationpurpose" name="nomination-purpose" required />
             </div>
-          ))}
-          <button type="button" onClick={addParticipant}>
-            Add Participant
-          </button>
+            <br /> <br/>
+            <button type="submit" className='submitB'>Submit</button>
+          </form>
         </div>
-        <button type="submit" onClick={SubmitParti}>Submit</button>
-      </form>
+        <div className="for-container">
+          <form id="Add participants" onSubmit={handleSubmit}>
+            <h2> <cenetr>Add Candidates</cenetr> </h2 > 
+            <div className="form-group">
+              <label htmlFor="nomination-id">Voting Id:</label>
+              <input
+                type="text"
+                id="nomination-id"
+                value={nominationId.toString()}
+                onChange={handleNominationIdChange}
+                required
+                readOnly
+              />
+           
+            
+              <label>Candidates:</label>
+              {participants.map((participant, index) => (
+                <div key={index} className="participant-input">
+                  <input
+                    type="text"
+                    value={participant}
+                    onChange={(event) => handleParticipantChange(index, event)}
+                    placeholder={`Candidate ${index + 1}`}
+                    required
+                  />
+                </div>
+              ))}
+              <button type="button" onClick={addParticipant}>
+                Add Candidates
+              </button>
+            
+            
+            <button type="submit"  className="nomination-submit" onClick={SubmitParti}>Submit</button><br/>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    </div>
-    </>
   );
 }
 

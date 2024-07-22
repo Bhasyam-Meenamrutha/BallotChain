@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Principal } from '@dfinity/principal';
 import { BallotChain_backend } from 'declarations/BallotChain_backend';
+import './MyProposals.css';
 
 function MyProposals() {
   const [Nomdata, setNomdata] = useState([]);
@@ -9,8 +10,7 @@ function MyProposals() {
   const { principal } = location.state || {};
   const [participants, setParticipants] = useState([]);
   const [selectedParticipant, setSelectedParticipant] = useState('');
-  const[mostvoted, setmostvoted] = useState("");
-  const[max, setmax] = useState("");
+  const [results, setResults] = useState({});
 
   useEffect(() => {
     async function fetchNominations() {
@@ -20,9 +20,9 @@ function MyProposals() {
       }
 
       try {
-        var prince = Principal.fromText(principal);
+        const prince = Principal.fromText(principal);
         const Nominations = await BallotChain_backend.GetNominataionsById(prince);
-        console.log(Nominations)
+        console.log(Nominations);
         setNomdata(Nominations);
       } catch (error) {
         console.error('Error fetching nominations:', error);
@@ -35,7 +35,7 @@ function MyProposals() {
     if (id !== undefined) {
       try {
         const Nmid = await BallotChain_backend.GetParticipantsById(BigInt(id));
-        console.log("Nmid", Nmid);
+        console.log('Nmid', Nmid);
         setParticipants(Nmid);
       } catch (error) {
         console.error('Error fetching participants by ID:', error);
@@ -49,22 +49,16 @@ function MyProposals() {
     setSelectedParticipant(event.target.value);
   };
 
-  // async function EndThisVoting(id){
-  //   var result = await BallotChain_backend.GetVotedDataByProp(BigInt(id))
-  //   console.log(result);
-  // }
-  let mostFrequent = null;
-      let maxCount = 0;
   async function EndThisVoting(id) {
     try {
-      var result = await BallotChain_backend.GetVotedDataByProp(BigInt(id));
+      const result = await BallotChain_backend.GetVotedDataByProp(BigInt(id));
       console.log(result);
-  
+
       // Initialize a map to count occurrences of each NominatedFor value
       const countMap = {};
-  
+
       // Count occurrences of each NominatedFor
-      result.forEach(entry => {
+      result.forEach((entry) => {
         const nominatedFor = entry.NominatedFor;
         if (countMap[nominatedFor]) {
           countMap[nominatedFor]++;
@@ -72,55 +66,56 @@ function MyProposals() {
           countMap[nominatedFor] = 1;
         }
       });
-  
+
       // Find the most frequent NominatedFor
-      
-      
+      let mostFrequent = null;
+      let maxCount = 0;
       for (const [nominatedFor, count] of Object.entries(countMap)) {
         if (count > maxCount) {
           mostFrequent = nominatedFor;
           maxCount = count;
         }
       }
-  
+
       console.log('Most Frequent NominatedFor:', mostFrequent);
       console.log('Occurrences:', maxCount);
-      setmostvoted(mostFrequent);
-      setmax(maxCount);
 
-      
-
-      
+      // Update the results state with the result for this proposal
+      setResults((prevResults) => ({
+        ...prevResults,
+        [id]: { mostFrequent, maxCount },
+      }));
     } catch (error) {
       console.error('Error during EndThisVoting:', error);
     }
   }
-  
-
 
   return (
     <>
-      <div>
-        <h2>My Proposals</h2>
-        <p>Here you can view your proposals.</p>
-      </div>
-      <div>
-        {Nomdata.length === 0 ? null : (
-          Nomdata.map((Nm, index) => (
-            <div key={index}>
-              <p>Nomination: {Nm.NominatePorpose.toString()}</p>
-              <p>NominationId: {Nm.NominateId.toString()}</p>
-              <button onClick={() => getPart(Nm.NominateId)}>Get Part</button>
-              <button onClick={() => EndThisVoting((Nm.NominateId))}>End</button>             
-              <div>max number voted:{max}<br />higheste voted for: {mostvoted}
+      <div className='page-containers'>
+        <div>
+          <h2>My Votings</h2>
+          <p>Here you can view your votes along with the result.</p>
+        </div>
+        <div className="proposal-box">
+          {Nomdata.length === 0 ? null : (
+            Nomdata.map((Nm, index) => (
+              <div key={index}>
+                <p>Voting Purpose: {Nm.NominatePorpose.toString()}</p>
+                <p>Voting Id: {Nm.NominateId.toString()}</p>
+                <button onClick={() => getPart(Nm.NominateId)}>Get Part</button>
+                <button onClick={() => EndThisVoting(Nm.NominateId)}>End</button>
+                {results[Nm.NominateId] && (
+                  <div id="resultdiv">
+                    <p>Max number voted: {results[Nm.NominateId].maxCount}</p>
+                    <p>Highest voted for: {results[Nm.NominateId].mostFrequent}</p>
+                  </div>
+                )}
               </div>
-
-            </div>
-          ))
-        )}
-      </div>
-
-      <div id="Nominationdet">
+            ))
+          )}
+        </div>
+        <div className="Nominationdetails">
           {participants.length === 0 ? null : (
             participants.map((details, index) => (
               <div key={index}>
@@ -146,7 +141,7 @@ function MyProposals() {
             ))
           )}
         </div>
-
+      </div>
     </>
   );
 }

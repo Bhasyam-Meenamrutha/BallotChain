@@ -34,14 +34,14 @@ function MypropPage(){
       
       <nav className="sidebar">
         <ul>
-          <li onClick={CreateProposalsfun}> Create Prooposals </li>
-          <li onClick={AllPropPage}>All Proposals</li>
-          <li onClick={MypropPage}>My Proposals</li>
+          <li onClick={CreateProposalsfun}> Create Voting </li>
+          <li onClick={AllPropPage}>Voting Topics</li>
+          <li onClick={MypropPage}>My Votings</li>
           
         </ul>
       </nav>
       <div id="pri"> 
-        Principal: {principal}
+        <b>Principal: {principal} </b>
       </div>
     </div>
   );

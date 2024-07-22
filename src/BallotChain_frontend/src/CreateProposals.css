@@ -1,57 +1,100 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.form-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-form {
+/* CreateProposals.css */
+.page-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjusted to fit within the viewport height */
+    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/vote1.jpeg'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px;
 }
+  
+  .form-container {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 40px; /* Space between the forms */
+    align-items: center;
+    height: 200px;
+   
 
-h2 {
-    text-align: center;
+  }
+
+  
+  .for-container {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px; /* Space between the forms */
+    margin-top: 1in;
+    align-items: center;
+    
+  }
+
+  .for-container h2{
+    color: wheat;
+  }
+  
+  .form-container {
+    margin: 0 20px;
+    flex: 1;
+  }
+  
+  #NF {
+
     margin-bottom: 20px;
-}
+    margin-top: -70px;
+    color: wheat;
+  }
 
-.form-group {
+  
+  
+  .form-group {
     margin-bottom: 15px;
-}
-
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input, textarea {
+    margin-left: 100px;
+  }
+  
+  input[type="text"] {
     width: 100%;
     padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
-}
-
-button:hover {
+    margin-top: 10px;
+  }
+  
+  button:hover {
     background-color: #0056b3;
-}
+  }
+  
+  .participant-input {
+    margin-bottom: 10px;
+  }
+
+ .submitB{
+    position: absolute;
+    top: 200px;
+
+
+ }
+ .nomination-submit{
+    position: absolute;
+    bottom:-10px;
+ }

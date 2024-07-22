@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BallotChain_backend } from 'declarations/BallotChain_backend';
 import { useLocation } from 'react-router-dom';
 import { Principal } from '@dfinity/principal';
+import './AllProposals.css';
 
 function AllProposals() {
   const [Nomdata, setNomdata] = useState([]);
@@ -69,57 +70,54 @@ function AllProposals() {
       console.error('Error during handleSubmit:', error);
     }
   }
-  
 
   return (
-    <>
-      <div>
-        <h2>All Proposals</h2>
-        <p>Here you can view all proposals.</p>
+    <div className='page-container'>
+      <div className="alprop-container">
+        <h2>Voting Topics</h2>
+        <p>Below, you can view a list of all election titles along with the candidates running for each position.</p>
       </div>
-      <div>
-        <div>
+      <div className="main-content">
+        <div className="content-container">
           {Nomdata.length === 0 ? null : (
             Nomdata.map((Nm, index) => (
-              <div key={index}>
-                <p>Nomination: {Nm.NominatePorpose.toString()}</p>
-                <p>NominationId: {Nm.NominateId.toString()}</p>
-                <button onClick={() => getPart(Nm.NominateId)}>Get Part</button>
+              <div className="nomination-item" key={index}>
+                <p>Election Title: {Nm.NominatePorpose.toString()}</p>
+                <p>Title Id: {Nm.NominateId.toString()}</p>
+                <button onClick={() => getPart(Nm.NominateId)}>Candidates List</button>
               </div>
             ))
           )}
         </div>
-        
         <div id="Nominationdet">
-  {participants.length === 0 ? null : (
-    participants.map((details, index) => (
-      <div key={index}>
-        <p>NominateId: {details.NominateId.toString()}</p>
-        <p>Participants:</p>
-        <ul>
-          {details.Participant.map((name, i) => (
-            <li key={i}>
-              <label>
-                <input
-                  type="radio"
-                  name="participant"
-                  value={name}
-                  checked={selectedParticipant === name}
-                  onChange={handleRadioChange}
-                />
-                {name}
-              </label>
-            </li>
-          ))}
-          <button onClick={() => handleSubmit(details.NominateId)}>Submit</button>
-        </ul>
+          {participants.length === 0 ? null : (
+            participants.map((details, index) => (
+              <div key={index}>
+                <p>Title Id: {details.NominateId.toString()}</p>
+                <p>Candidates:</p>
+                <ul>
+                  {details.Participant.map((name, i) => (
+                    <li key={i}>
+                      <label>
+                        <input
+                          type="radio"
+                          name="participant"
+                          value={name}
+                          checked={selectedParticipant === name}
+                          onChange={handleRadioChange}
+                        />
+                        {name}
+                      </label>
+                    </li>
+                  ))}
+                  <button onClick={() => handleSubmit(details.NominateId)}>Submit</button>
+                </ul>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    ))
-  )}
-</div>
-
-      </div>
-    </>
+    </div>
   );
 }
 

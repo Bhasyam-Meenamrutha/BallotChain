@@ -1,0 +1,95 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/vote1.jpeg'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px;
+}
+body{
+    color: white;
+}
+
+.alprop-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.alprop-container h2 {
+    color: rgb(161, 33, 33);
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+
+.alprop-container p {
+    color: rgb(9, 1, 1);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80vh;
+    max-width: 1200px; 
+    gap: 20px; 
+}
+
+.content-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%; 
+    height: 60vh;
+    overflow-y: auto;
+    text-align: center;
+    color: white;
+}
+
+.content-container p{
+    color: white;
+}
+#Nominationdet {
+    background: rgba(0, 0, 0, 0.5);
+    padding-top: 40px;
+    border-radius: 10px;
+    width: 35%; 
+    height: 60vh;
+    overflow-y: auto;
+    text-align: center;
+    margin-top: 1.2in;
+}
+
+#Nominationdet p{
+    color: white;
+}
+
+.nomination-item {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049; 
+}

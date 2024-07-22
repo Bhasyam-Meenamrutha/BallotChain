@@ -1,7 +1,7 @@
 .dashboard {
     display: flex;
     height: 100vh;
-    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/VOTE2.jpg'); /* Update with your background image path */
+    background-image: url('/home/meenamrutha/ic-projects/BallotChain/src/BallotChain_frontend/public/WhatsApp Image 2024-07-21 at 17.36.39.jpeg'); /* Update with your background image path */
     background-size: cover;
     background-position: center;
   }
@@ -11,6 +11,7 @@
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    color: black;
   }
   
   .sidebar ul {
@@ -60,15 +61,15 @@
   #pri{
     position:absolute;
     left:300px;
-    top:200px;
-    font-size: 35px ;
-
-    color: #f0f5ef;
+    top:210px;
+    font-size: 30px ;
+background-color: rgb(189, 139, 235);
+    color: #0a0a09;
   }
   #profile{
     position: absolute;
     left:750px;
-    top:100px;
-    color: rgb(0, 255, 136);
+    top:130px;
+    color: rgb(16, 17, 15);
     font-size: 50px;
   }
